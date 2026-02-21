@@ -58,13 +58,12 @@ Circuit Setup
 Project Documentation
 For Software:
 Screenshots (Add at least 3)
-![<img width="1366" height="768" alt="Screenshot (2)" src="https://github.com/user-attachments/assets/c3411491-35cc-4000-b040-ed6b030ad3b6" />
+<img width="1348" height="649" alt="Screenshot (2)" src="https://github.com/user-attachments/assets/705114b0-f13a-4fdc-85a6-244f34ee2f40" />
 ](Add screenshot 1 here with proper name) Add caption explaining what this shows
 
-![<img width="1366" height="768" alt="Screenshot (2)" src="https://github.com/user-attachments/assets/10e9b738-d102-46fd-b428-daba38852526" />
 ](Add screenshot 2 here with proper name) Add caption explaining what this shows
 
-![<img width="1366" height="768" alt="Screenshot (3)" src="https://github.com/user-attachments/assets/e567f8d0-9709-4666-a377-74cef298cf1a" />
+<img width="1348" height="649" alt="Screenshot (2)" src="https://github.com/user-attachments/assets/b0a8a22b-4c9a-4825-b835-56b6b7461585" />
 ](Add screenshot 3 here with proper name) Add caption explaining what this shows
 
 Diagrams
@@ -497,4 +496,5 @@ Just run `python app.py` and demo on `localhost:5000`.
 ---
 
 *Made with 💜 and way too much caffeine by Team SASSBack AI*
+
 

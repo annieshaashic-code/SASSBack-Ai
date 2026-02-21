@@ -97,7 +97,7 @@ def api_comeback():
         "category":     result["category"],
         "humor_level":  humor_level,
         "incident_id":  incident_id,
-        "method":       result["method"],   # "openai" or "fallback"
+        "method":       result["method"],   # "gemini" or "fallback"
     })
 
 
@@ -188,11 +188,11 @@ def api_like_post(post_id):
 
 @app.route("/api/health", methods=["GET"])
 def health():
-    openai_configured = bool(os.environ.get("OPENAI_API_KEY"))
+    gemini_configured = bool(os.environ.get("GEMINI_API_KEY"))
     return jsonify({
         "status": "✨ Fairy Godmother is online and fabulous!",
-        "openai": openai_configured,
-        "version": "1.0.0",
+        "gemini": gemini_configured,
+        "version": "1.1.0",
     })
 
 
@@ -201,5 +201,5 @@ def health():
 if __name__ == "__main__":
     port = int(os.environ.get("PORT", 5000))
     debug = os.environ.get("FLASK_ENV", "production") == "development"
-    print(f"🧚‍♀️ Fairy Godmother warming up on port {port}...")
+    print(f"Fairy Godmother warming up on port {port}...")
     app.run(host="0.0.0.0", port=port, debug=debug)

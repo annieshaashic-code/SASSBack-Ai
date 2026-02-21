@@ -27,8 +27,6 @@
     </div>
     <div class="nav-links">
       <a href="index.html" class="nav-link active">Home</a>
-      <a href="community.html" class="nav-link">Community 💬</a>
-      <a href="insights.html" class="nav-link">My Insights 📊</a>
     </div>
     <button class="btn-primary nav-cta" onclick="openNicknameModal()">✨ Get Started</button>
   </nav>
@@ -125,7 +123,6 @@
       <div class="hero-badges">
         <span class="badge">😂 Humor-Powered</span>
         <span class="badge">🔒 Private</span>
-        <span class="badge">🌟 Community-Backed</span>
         <span class="badge">💪 Empowering</span>
       </div>
     </div>
@@ -221,7 +218,6 @@
           <div class="result-actions">
             <button class="btn-secondary" onclick="copyComeback()">📋 Copy</button>
             <button class="btn-secondary" onclick="shareToMeme()">🖼️ Make Meme</button>
-            <button class="btn-secondary" onclick="openShareModal()">💬 Share Story</button>
             <button class="btn-ghost" onclick="generateComeback()">🔄 Another One!</button>
           </div>
         </div>
@@ -280,8 +276,6 @@
     <p>🧚‍♀️ <strong>SASSBack AI</strong> – Because every queen deserves the perfect comeback. <br />
       Built with 💜 at <em>Women Only Hackathon 2026</em></p>
     <div class="footer-links">
-      <a href="community.html">Community 💬</a>
-      <a href="insights.html">My Insights 📊</a>
       <a href="#privacy">Privacy</a>
     </div>
   </footer>
@@ -301,17 +295,7 @@
     </div>
   </div>
 
-  <!-- Share to Community Modal -->
-  <div class="modal-overlay" id="shareModal" style="display:none" onclick="closeModal('shareModal')">
-    <div class="modal glass-card" onclick="event.stopPropagation()">
-      <button class="modal-close" onclick="closeModal('shareModal')">✕</button>
-      <h2>Share Anonymously 💬</h2>
-      <p>Add some context (optional) and light up the community wall!</p>
-      <textarea id="shareStoryInput" class="scenario-textarea" rows="3"
-        placeholder="What happened? Others will see this anonymously ✨"></textarea>
-      <button class="btn-primary" onclick="submitShare()">Post to Wall 🌟</button>
-    </div>
-  </div>
+
 
   <!-- Meme Card Modal -->
   <div class="modal-overlay" id="memeModal" style="display:none" onclick="closeModal('memeModal')">

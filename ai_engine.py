@@ -1,9 +1,11 @@
 """
 AI Engine – generates fierce, funny, empowering comebacks.
-SASSBack AI  |  Primary: OpenAI GPT-4o  |  Fallback: curated witty bank.
+SASSBack AI  |  Primary: Google Gemini AI  |  Fallback: curated witty bank.
 """
 import os
 import random
+import base64
+import io
 from typing import Optional
 
 # ── Category detection keywords ──────────────────────────────────────────────
@@ -148,28 +150,26 @@ def generate_comeback(
     scenario: str,
     humor_level: int = 5,
     category: Optional[str] = None,
-    openai_key: Optional[str] = None,
+    gemini_key: Optional[str] = None,
     image_b64: Optional[str] = None,
 ) -> dict:
     """
-    Main entry point. Returns:
-       { "response": str, "category": str, "method": "openai" | "fallback" }
-    Pass image_b64 (data:image/... base64 string) to enable vision-based
-    reply generation from a screenshot of an online comment.
+    Main entry point using Google Gemini. Returns:
+       { "response": str, "category": str, "method": "gemini" | "fallback" }
     """
     if category is None:
         category = detect_category(scenario)
 
     humor_style = _humor_style(humor_level)
 
-    # ── Try OpenAI ────────────────────────────────────────────────────────────
-    api_key = openai_key or os.environ.get("OPENAI_API_KEY")
+    # ── Try Gemini ────────────────────────────────────────────────────────────
+    api_key = gemini_key or os.environ.get("GEMINI_API_KEY")
     if api_key:
         try:
-            import openai
-            client = openai.OpenAI(api_key=api_key)
+            import google.generativeai as genai
+            genai.configure(api_key=api_key)
 
-            system_prompt = (
+            system_instruction = (
                 "You are SASSBack AI – a fierce fairy godmother: think Wanda from Fairly OddParents "
                 "meets a stand-up comedian. Generate short, witty, empowering replies for women. "
                 "Tone: " + humor_style + ". "
@@ -179,47 +179,44 @@ def generate_comeback(
             )
 
             if image_b64:
-                # Vision mode – read the screenshot and reply to the comment in it
-                user_content = [
-                    {
-                        "type": "text",
-                        "text": (
-                            f"Humor level (1=mild, 10=savage): {humor_level}\n"
-                            f"Context: {scenario}\n"
-                            "Read the comment/message in this screenshot and fire back "
-                            "a short, punchy reply TO it. Max 2 sentences."
-                        ),
-                    },
-                    {
-                        "type": "image_url",
-                        "image_url": {"url": image_b64, "detail": "low"},
-                    },
+                # Vision mode
+                model = genai.GenerativeModel('gemini-1.5-flash')
+                
+                # Extract base64 data
+                if "," in image_b64:
+                    header, encoded = image_b64.split(",", 1)
+                else:
+                    encoded = image_b64
+                
+                image_data = base64.b64decode(encoded)
+                
+                content = [
+                    system_instruction,
+                    f"Context: {scenario}",
+                    f"Humor level: {humor_level}",
+                    {"mime_type": "image/png", "data": image_data},
+                    "Read the comment in this image and fire back a short, punchy reply TO it. Max 2 sentences."
                 ]
-                model = "gpt-4o"   # vision requires gpt-4o
             else:
                 # Text-only mode
-                user_content = (
-                    f"Humor level (1=mild, 10=savage): {humor_level}\n"
+                model = genai.GenerativeModel('gemini-1.5-flash')
+                content = (
+                    f"{system_instruction}\n\n"
+                    f"Humor level: {humor_level}\n"
                     f"Category: {category}\n"
                     f"Situation: {scenario}\n"
                     "Write ONE sharp comeback – max 2 sentences, one emoji."
                 )
-                model = "gpt-4o-mini"
 
-            resp = client.chat.completions.create(
-                model=model,
-                messages=[
-                    {"role": "system", "content": system_prompt},
-                    {"role": "user",   "content": user_content},
-                ],
-                max_tokens=90,        # keeps replies short & punchy
-                temperature=0.9,
-            )
-            content = resp.choices[0].message.content.strip()
-            return {"response": content, "category": category, "method": "openai"}
+            resp = model.generate_content(content)
+            
+            if not resp or not resp.text:
+                raise Exception("Empty response from Gemini")
+                
+            return {"response": resp.text.strip(), "category": category, "method": "gemini"}
 
         except Exception as e:
-            print(f"[AI Engine] OpenAI failed ({e}). Using fallback.")
+            print(f"[AI Engine] Gemini failed ({e}). Using fallback.")
 
     # ── Fallback: curated bank ────────────────────────────────────────────────
     response = _fallback_response(category, humor_level)

@@ -19,7 +19,7 @@ def init_db():
     with get_connection() as conn:
         conn.executescript(CREATE_TABLES_SQL)
         conn.commit()
-    print("✨ Database initialised!")
+    print("Database initialised!")
 
 
 # ── User helpers ────────────────────────────────────────────────────────────

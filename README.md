@@ -2,28 +2,25 @@
   <img src="./img.png" alt="Project Banner" width="100%">
 </p>
 
-# [Project Name] 🎯
+# [Project SASSBack Ai ] 🎯
 
 ## Basic Details
 
-### Team Name: [Name]
+### Team Name: [bubblo]
 
 ### Team Members
-- Member 1: [Name] - [College]
-- Member 2: [Name] - [College]
+- Member 1: [anni esha ashic] - [snm institute of management and technology]
+- Member 2: [krishnapriya ks ] - [snm institute of management and technology]
 
 ### Hosted Project Link
-[mention your project hosted link here]
-
+file:///C:/Users/Hp/Desktop/sass/javascript/index.html
 ### Project Description
-[2-3 lines about what your project does]
+[SAASSBack Ai -is a ai powered assistent that helps womens to respond confidently to social media comments ]
 
 ### The Problem statement
-[What problem are you solving?]
-
+women facing repeated micro agresssions and unsociolicited commentery in online which discors the confidence .
 ### The Solution
-[How are you solving it?]
-
+SASSBack Ai is an ai powered assistent thats helps to generate confident context aware reply to negative online comments in real time .
 ---
 
 ## Technical Details
@@ -31,31 +28,30 @@
 ### Technologies/Components Used
 
 **For Software:**
-- Languages used: [e.g., JavaScript, Python, Java]
-- Frameworks used: [e.g., React, Django, Spring Boot]
+- Languages used: [e.g., JavaScrip,HTML, css, java script]
 - Libraries used: [e.g., axios, pandas, JUnit]
 - Tools used: [e.g., VS Code, Git, Docker]
 
 **For Hardware:**
-- Main components: [List main components]
-- Specifications: [Technical specifications]
-- Tools required: [List tools needed]
+- Main components: [user interface ,API server, ai/NLP enging]
+- Specifications: [html ,css,java scrit,web interface , API , flask ,json based data , ai NLP enging ]
+- Tools required: [anti gravity ,github,flask, java ,css,java script, html]
 
 ---
 
 ## Features
 
 List the key features of your project:
-- Feature 1: [Description]
-- Feature 2: [Description]
-- Feature 3: [Description]
-- Feature 4: [Description]
+- Feature 1: [instant analyse comment and give response ]
+- Feature 2: [detect abusive language ]
+- Feature 3:  need of login 
+- Feature 4: [provide real time ai powered comment with  moderating sentiment analyssis calm cool confident technical]
 
 ---
 
 ## Implementation
 
-### For Software:
+### For Software:file:///C:/Users/Hp/Desktop/sass/javascript/index.html
 
 #### Installation
 ```bash
@@ -83,13 +79,16 @@ List the key features of your project:
 
 #### Screenshots (Add at least 3)
 
-![Screenshot1](Add screenshot 1 here with proper name)
+![<img width="1348" height="649" alt="Screenshot (2)" src="https://github.com/user-attachments/assets/4ba4cd8a-d907-40f0-8352-2409507e6312" />
+](Add screenshot 1 here with proper name)
 *Add caption explaining what this shows*
 
-![Screenshot2](Add screenshot 2 here with proper name)
+![<img width="1341" height="653" alt="Screenshot (4)" src="https://github.com/user-attachments/assets/6c647e2c-c7f6-49b9-8109-5eb6a27c38f8" />
+](Add screenshot 2 here with proper name)
 *Add caption explaining what this shows*
 
-![Screenshot3](Add screenshot 3 here with proper name)
+![<img width="1355" height="642" alt="Screenshot (5)" src="https://github.com/user-attachments/assets/d86cda9d-b049-4865-97b3-bb8bffa004d2" />
+](Add screenshot 3 here with proper name)
 *Add caption explaining what this shows*
 
 #### Diagrams
@@ -118,15 +117,18 @@ List the key features of your project:
 
 #### Build Photos
 
-![Team](Add photo of your team here)
+![<img width="1348" height="649" alt="Screenshot (2)" src="https://github.com/user-attachments/assets/67c9525b-a75e-425f-9f65-28c7bc0d381f" />
+](Add photo of your team here)
 
-![Components](Add photo of your components here)
+![<img width="1326" height="641" alt="Screenshot (6)" src="https://github.com/user-attachments/assets/daa4904f-935e-4944-b147-ee7347af5e90" />
+](Add photo of your components here)
 *List out all components shown*
 
 ![Build](Add photos of build process here)
 *Explain the build steps*
 
-![Final](Add photo of final product here)
+![<img width="1355" height="642" alt="Screenshot (5)" src="https://github.com/user-attachments/assets/8de01518-c10e-4a49-9d11-1144a311f3d2" />
+](Add photo of final product here)
 *Explain the final build*
 
 ---
@@ -142,7 +144,10 @@ List the key features of your project:
 ##### Endpoints
 
 **GET /api/endpoint**
-- **Description:** [What it does]
+- **Description:** [Our project is an AI-powered online comment analysis and moderation system designed to create safer and more positive digital spaces.
+The system automatically analyzes user comments in real time using Natural Language Processing (NLP) techniques. It detects sentiment (positive, negative, neutral), identifies toxic or abusive language, and filters spam content without human intervention.
+The platform provides an intelligent dashboard for administrators to monitor flagged comments and track engagement patterns. By reducing manual moderation effort, the system helps social media platforms, e-commerce websites, educational portals, and online communities maintain healthy discussions.
+Our solution is scalable, API-based, and can be integrated into any web application that supports user-generated content.]
 - **Parameters:**
   - `param1` (string): [Description]
   - `param2` (integer): [Description]

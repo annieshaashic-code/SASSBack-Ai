@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>My Insights – SASSBack AI 📊</title>
+    <meta name="description" content="See your personal pattern insights and monthly comeback statistics." />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700;800&family=Dancing+Script:wght@700&display=swap"
+        rel="stylesheet" />
+    <link rel="stylesheet" href="styles.css" />
+</head>
+
+<body>
+    <div class="sparkle-bg" aria-hidden="true"></div>
+
+    <!-- NAV -->
+    <nav class="navbar">
+        <div class="nav-logo">
+            <span class="wand">🪄</span>
+            <span class="logo-text">SASSBack AI</span>
+        </div>
+        <div class="nav-links">
+            <a href="index.html" class="nav-link">Home</a>
+            <a href="community.html" class="nav-link">Community 💬</a>
+            <a href="insights.html" class="nav-link active">My Insights 📊</a>
+        </div>
+    </nav>
+
+    <!-- PAGE HERO -->
+    <header class="page-hero">
+        <div
+            style="font-size:4rem;display:block;text-align:center;margin-bottom:16px;animation:fairyFloat 3s ease-in-out infinite;filter:drop-shadow(0 0 20px rgba(224,64,251,0.8))">
+            📊</div>
+        <h1 class="hero-title">My <span class="gradient-text">Insights</span> 👑</h1>
+        <p class="hero-subtitle">Your personal battle stats. See what you've handled, laugh at it,<br />and remember
+            you're still standing. 💜</p>
+    </header>
+
+    <main class="main-container">
+
+        <!-- No user state -->
+        <div id="noUserState" class="glass-card" style="padding:48px;text-align:center;display:none">
+            <div style="font-size:3.5rem;margin-bottom:16px">🧚‍♀️</div>
+            <h2 style="margin-bottom:12px">Hey Queen! I don't know you yet…</h2>
+            <p style="color:#c4a8e0;margin-bottom:24px">
+                To track your personal insights, go back and tap <strong>"Get Started"</strong> to set your nickname.
+                Then your Fairy Godmother will remember your story! ✨
+            </p>
+            <a href="index.html" class="btn-primary" style="text-decoration:none;display:inline-block">🪄 Go Get a
+                Comeback!</a>
+        </div>
+
+        <!-- Main insights (shown when user exists) -->
+        <div id="insightsDashboard" style="display:none">
+
+            <!-- Fairy insight message -->
+            <div class="glass-card" id="insightMsgCard" style="padding:28px 32px;border:1px solid rgba(224,64,251,0.3);
+               box-shadow:0 0 40px rgba(224,64,251,0.2);display:flex;gap:20px;align-items:center;flex-wrap:wrap">
+                <div style="font-size:3rem">🧚‍♀️</div>
+                <div>
+                    <div
+                        style="font-size:0.75rem;font-weight:700;text-transform:uppercase;letter-spacing:1px;color:#e040fb;margin-bottom:6px">
+                        FAIRY GODMOTHER SAYS…
+                    </div>
+                    <p class="insight-message" id="insightMsg" style="margin-top:0">Loading your message…</p>
+                </div>
+            </div>
+
+            <!-- Key stats cards -->
+            <section>
+                <h2 class="section-title">Your Battle Stats 🔥</h2>
+                <div class="insights-grid">
+                    <div class="glass-card insight-card">
+                        <div class="insight-number" id="statTotal">–</div>
+                        <div class="insight-label">Total Incidents Handled 💪</div>
+                    </div>
+                    <div class="glass-card insight-card">
+                        <div class="insight-number" id="statTopCat">–</div>
+                        <div class="insight-label">Most Common Category 🏆</div>
+                    </div>
+                    <div class="glass-card insight-card">
+                        <div class="insight-number">👑</div>
+                        <div class="insight-label">You're Still Standing. Always.</div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Category bar chart -->
+            <section class="glass-card" style="padding:36px">
+                <h2 class="section-title" style="margin-bottom:24px">What You've Dealt With 📊</h2>
+                <div class="bar-chart" id="barChart">
+                    <p style="text-align:center;color:#c4a8e0">No incidents logged yet. Go get your first comeback! ✨
+                    </p>
+                </div>
+            </section>
+
+            <!-- Recent incidents timeline -->
+            <section>
+                <h2 class="section-title">Recent Comeback Log 🪄</h2>
+                <div id="incidentList" style="display:flex;flex-direction:column;gap:14px">
+                    <div class="glass-card" style="padding:30px;text-align:center;color:#c4a8e0">
+                        Loading your history…
+                    </div>
+                </div>
+            </section>
+
+            <!-- Self-care nudge -->
+            <div class="glass-card" style="padding:36px;text-align:center;
+           background:linear-gradient(135deg,rgba(156,39,176,0.15),rgba(0,188,212,0.08));
+           border:1px solid rgba(224,64,251,0.25)">
+                <div style="font-size:3rem;margin-bottom:16px">🛁</div>
+                <h3 style="font-size:1.3rem;margin-bottom:12px">Self-Care Reminder ✨</h3>
+                <p style="color:#c4a8e0;line-height:1.7;max-width:480px;margin:0 auto 24px">
+                    Dealing with nonsense takes energy. Your Fairy Godmother officially prescribes:
+                    <strong style="color:#e040fb">one treat, one bubble bath, and zero apologies.</strong> 🌸
+                </p>
+                <a href="index.html" class="btn-primary" style="text-decoration:none;display:inline-block">
+                    🪄 Get Another Comeback
+                </a>
+            </div>
+
+        </div>
+    </main>
+
+    <footer class="footer">
+        <p>🧚‍♀️ <strong>SASSBack AI</strong> – Because every queen deserves the perfect comeback.<br />
+            Built with 💜 at <em>Women Only Hackathon 2026</em></p>
+        <div class="footer-links">
+            <a href="index.html">Home</a>
+            <a href="community.html">Community 💬</a>
+        </div>
+    </footer>
+
+    <script>
+        const CATEGORY_MAP = {
+            mansplaining: "🎓 Mansplaining", interruption: "🗣️ Interruption",
+            outfit_comment: "👗 Outfit Police", condescension: "😤 Condescension",
+            workplace: "🏢 Workplace", street_harassment: "🚶‍♀️ Street Harassment",
+            general: "✨ General Sass",
+        };
+
+        const INSIGHT_MSGS = [
+            count => count === 0 ? "✨ No data yet – go get your first comeback, darling!" : null,
+            count => count >= 10 ? `You've handled ${count} incidents and you're STILL standing. Legendary. 👑` : null,
+            count => count >= 5 ? `${count} incidents handled this session. Your Fairy Godmother prescribes: one spa day. 🛁✨` : null,
+            count => count >= 1 ? `You've already used the wand ${count} time${count > 1 ? "s" : ""}! Keep collecting those wins. 💅` : null,
+            () => "Your Fairy Godmother is watching over you. You've got this! ✨",
+        ];
+
+        function getInsightMsg(count) {
+            for (const fn of INSIGHT_MSGS) { const r = fn(count); if (r) return r; }
+            return "✨ You are unstoppable!";
+        }
+
+        function timeAgo(dateStr) {
+            const diff = (Date.now() - new Date(dateStr).getTime()) / 1000;
+            if (diff < 60) return "just now";
+            if (diff < 3600) return `${Math.floor(diff / 60)}m ago`;
+            if (diff < 86400) return `${Math.floor(diff / 3600)}h ago`;
+            return `${Math.floor(diff / 86400)}d ago`;
+        }
+
+        function escapeHtml(str = "") {
+            return str.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
+        }
+
+        function loadInsights() {
+            const saved = JSON.parse(localStorage.getItem("sassback_user") || "null");
+
+            if (!saved) {
+                document.getElementById("noUserState").style.display = "block";
+                document.getElementById("insightsDashboard").style.display = "none";
+                return;
+            }
+
+            document.getElementById("insightsDashboard").style.display = "block";
+
+            const incidents = JSON.parse(localStorage.getItem("sassback_incidents") || "[]");
+
+            // Stats
+            const total = incidents.length;
+            document.getElementById("statTotal").textContent = total;
+            document.getElementById("insightMsg").textContent = getInsightMsg(total);
+
+            // Top category
+            const catCounts = {};
+            incidents.forEach(i => { catCounts[i.category] = (catCounts[i.category] || 0) + 1; });
+            const topCat = Object.entries(catCounts).sort((a, b) => b[1] - a[1])[0]?.[0] || null;
+            document.getElementById("statTopCat").textContent = topCat ? (CATEGORY_MAP[topCat] || topCat) : "None yet!";
+
+            // Bar chart
+            renderBarChart(
+                Object.entries(catCounts).map(([category, cnt]) => ({ category, cnt })).sort((a, b) => b.cnt - a.cnt)
+            );
+
+            // Incident list
+            renderIncidents(incidents);
+        }
+
+        function renderBarChart(data) {
+            const chart = document.getElementById("barChart");
+            if (!data.length) {
+                chart.innerHTML = `<p style="text-align:center;color:#c4a8e0">No incidents logged yet. Go get your first comeback! ✨</p>`;
+                return;
+            }
+            const max = Math.max(...data.map(d => d.cnt), 1);
+            chart.innerHTML = data.map(row => `
+              <div class="bar-row">
+                <span class="bar-label">${CATEGORY_MAP[row.category] || row.category}</span>
+                <div class="bar-track">
+                  <div class="bar-fill" style="width:${Math.round((row.cnt / max) * 100)}%"></div>
+                </div>
+                <span class="bar-count">${row.cnt}</span>
+              </div>`).join("");
+        }
+
+        function renderIncidents(incidents) {
+            const list = document.getElementById("incidentList");
+            if (!incidents.length) {
+                list.innerHTML = `<div class="glass-card" style="padding:30px;text-align:center;color:#c4a8e0">No incidents yet – go generate your first comeback! ✨</div>`;
+                return;
+            }
+            list.innerHTML = incidents.slice(0, 10).map(inc => `
+              <div class="glass-card" style="padding:20px 24px;display:flex;gap:16px;align-items:flex-start;flex-wrap:wrap">
+                <div style="flex:1;min-width:200px">
+                  <span class="post-category-badge" style="margin-bottom:8px;display:inline-block">${CATEGORY_MAP[inc.category] || "✨"}</span>
+                  <p style="font-size:0.9rem;color:#c4a8e0;margin-bottom:6px;font-style:italic">"${escapeHtml(inc.scenario || "").substring(0, 120)}${(inc.scenario || "").length > 120 ? "…" : ""}"</p>
+                  <p style="font-size:0.95rem;color:#f3e8ff;line-height:1.6">${escapeHtml(inc.comeback || "").substring(0, 200)}${(inc.comeback || "").length > 200 ? "…" : ""}</p>
+                </div>
+                <div style="text-align:right;min-width:80px">
+                  <div style="font-size:1.4rem">🪄</div>
+                  <div style="font-size:0.75rem;color:#c4a8e0;margin-top:4px">Level ${inc.humorLevel || 5}<br/>${timeAgo(inc.date || new Date().toISOString())}</div>
+                </div>
+              </div>`).join("");
+        }
+
+        loadInsights();
+    </script>
+</body>
+
+</html>

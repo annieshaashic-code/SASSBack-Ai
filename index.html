@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>SASSBack AI – Your Fierce Comeback Queen 👑</title>
+  <meta name="description"
+    content="Get funny, empowering AI comebacks for everyday situations. SASSBack AI – your fierce fairy godmother has your back!" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700;800&family=Dancing+Script:wght@700&display=swap"
+    rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+
+<body>
+
+  <!-- ✨ Floating sparkles background -->
+  <div class="sparkle-bg" aria-hidden="true" id="sparkleCanvas"></div>
+
+  <!-- ── NAV ──────────────────────────────────────────────────────────────── -->
+  <nav class="navbar">
+    <div class="nav-logo">
+      <span class="wand">🪄</span>
+      <span class="logo-text">SASSBack AI</span>
+    </div>
+    <div class="nav-links">
+      <a href="index.html" class="nav-link active">Home</a>
+      <a href="community.html" class="nav-link">Community 💬</a>
+      <a href="insights.html" class="nav-link">My Insights 📊</a>
+    </div>
+    <button class="btn-primary nav-cta" onclick="openNicknameModal()">✨ Get Started</button>
+  </nav>
+
+  <!-- ── HERO ─────────────────────────────────────────────────────────────── -->
+  <header class="hero">
+    <div class="hero-content">
+      <!-- Aesthetic Fairy SVG Illustration -->
+      <div class="fairy-avatar" id="fairyAvatar">
+        <svg viewBox="0 0 160 180" xmlns="http://www.w3.org/2000/svg" class="fairy-svg">
+          <defs>
+            <radialGradient id="skinGrad" cx="50%" cy="50%" r="50%">
+              <stop offset="0%" stop-color="#ffe0cc" />
+              <stop offset="100%" stop-color="#f8b9a0" />
+            </radialGradient>
+            <radialGradient id="hairGrad" cx="30%" cy="30%" r="70%">
+              <stop offset="0%" stop-color="#b03dff" />
+              <stop offset="100%" stop-color="#6600cc" />
+            </radialGradient>
+            <radialGradient id="wingGrad" cx="50%" cy="50%" r="50%">
+              <stop offset="0%" stop-color="rgba(224,64,251,0.7)" />
+              <stop offset="100%" stop-color="rgba(156,39,176,0.2)" />
+            </radialGradient>
+            <filter id="glow">
+              <feGaussianBlur stdDeviation="3" result="blur" />
+              <feMerge>
+                <feMergeNode in="blur" />
+                <feMergeNode in="SourceGraphic" />
+              </feMerge>
+            </filter>
+          </defs>
+          <!-- Wings -->
+          <ellipse cx="55" cy="90" rx="38" ry="22" fill="url(#wingGrad)" transform="rotate(-25 55 90)"
+            filter="url(#glow)" opacity="0.9" />
+          <ellipse cx="105" cy="90" rx="38" ry="22" fill="url(#wingGrad)" transform="rotate(25 105 90)"
+            filter="url(#glow)" opacity="0.9" />
+          <ellipse cx="52" cy="105" rx="22" ry="13" fill="url(#wingGrad)" transform="rotate(15 52 105)" opacity="0.7" />
+          <ellipse cx="108" cy="105" rx="22" ry="13" fill="url(#wingGrad)" transform="rotate(-15 108 105)"
+            opacity="0.7" />
+          <!-- Body / dress -->
+          <ellipse cx="80" cy="130" rx="28" ry="38" fill="#c026d3" />
+          <ellipse cx="80" cy="118" rx="22" ry="20" fill="#d946ef" />
+          <!-- Sparkles on dress -->
+          <text x="60" y="140" font-size="10" fill="#ffd700" opacity="0.9">✦</text>
+          <text x="88" y="150" font-size="7" fill="#fff" opacity="0.8">✦</text>
+          <text x="72" y="158" font-size="6" fill="#ffd700" opacity="0.7">✦</text>
+          <!-- Head -->
+          <ellipse cx="80" cy="60" rx="24" ry="26" fill="url(#skinGrad)" />
+          <!-- Hair flowing -->
+          <path d="M58,48 Q50,30 60,20 Q80,10 100,20 Q110,30 102,48" fill="url(#hairGrad)" />
+          <path d="M58,48 Q48,60 50,80 Q54,90 58,85" fill="url(#hairGrad)" opacity="0.9" />
+          <path d="M102,48 Q112,60 110,80 Q106,90 102,85" fill="url(#hairGrad)" opacity="0.9" />
+          <!-- Hair sparkle -->
+          <circle cx="100" cy="25" r="3" fill="#ffd700" filter="url(#glow)" />
+          <!-- Eyes -->
+          <ellipse cx="71" cy="60" rx="4" ry="4.5" fill="#4a0080" />
+          <ellipse cx="89" cy="60" rx="4" ry="4.5" fill="#4a0080" />
+          <circle cx="72.5" cy="58.5" r="1.3" fill="white" />
+          <circle cx="90.5" cy="58.5" r="1.3" fill="white" />
+          <!-- Eyelashes -->
+          <path d="M67,57 Q65,54 64,53" stroke="#4a0080" stroke-width="1.2" fill="none" />
+          <path d="M69,56 Q68,53 68,52" stroke="#4a0080" stroke-width="1.2" fill="none" />
+          <path d="M93,57 Q95,54 96,53" stroke="#4a0080" stroke-width="1.2" fill="none" />
+          <path d="M91,56 Q92,53 92,52" stroke="#4a0080" stroke-width="1.2" fill="none" />
+          <!-- Blush -->
+          <ellipse cx="63" cy="67" rx="6" ry="3" fill="#ffb3ba" opacity="0.5" />
+          <ellipse cx="97" cy="67" rx="6" ry="3" fill="#ffb3ba" opacity="0.5" />
+          <!-- Smile -->
+          <path d="M72,73 Q80,79 88,73" stroke="#c0507a" stroke-width="1.5" fill="none" stroke-linecap="round" />
+          <!-- Crown -->
+          <path d="M63,44 L66,34 L72,40 L80,30 L88,40 L94,34 L97,44 Z" fill="#ffd700" filter="url(#glow)" />
+          <circle cx="80" cy="31" r="3" fill="#ff69b4" />
+          <circle cx="66" cy="35" r="2" fill="#e040fb" />
+          <circle cx="94" cy="35" r="2" fill="#e040fb" />
+          <!-- Wand arm -->
+          <line x1="104" y1="110" x2="130" y2="80" stroke="#ffd700" stroke-width="2.5" stroke-linecap="round" />
+          <circle cx="130" cy="78" r="6" fill="#ffd700" filter="url(#glow)" />
+          <circle cx="130" cy="78" r="3" fill="white" />
+          <!-- Floating sparkles around -->
+          <text x="20" y="50" font-size="12" fill="#ffd700" filter="url(#glow)" opacity="0.9">✨</text>
+          <text x="125" y="55" font-size="10" fill="#e040fb" filter="url(#glow)">⭐</text>
+          <text x="15" y="110" font-size="8" fill="#ffd700" opacity="0.8">✦</text>
+          <text x="135" y="115" font-size="9" fill="#fff" opacity="0.8">✦</text>
+        </svg>
+      </div>
+      <div class="fairy-speech-bubble" id="heroBubble">
+        Bibbidi-bobbidi-BACK OFF! I'm here to arm you with the BEST comebacks, darling. ✨
+      </div>
+      <h1 class="hero-title">Your <span class="gradient-text">Fierce Fairy Godmother</span><br />Has Arrived 👑</h1>
+      <p class="hero-subtitle">
+        Drop your situation below. I'll conjure a witty, empowering comeback that roasts the problem <em>and</em>
+        restores your crown. 💅
+      </p>
+      <div class="hero-badges">
+        <span class="badge">😂 Humor-Powered</span>
+        <span class="badge">🔒 Private</span>
+        <span class="badge">🌟 Community-Backed</span>
+        <span class="badge">💪 Empowering</span>
+      </div>
+    </div>
+  </header>
+
+  <!-- ── MAIN GENERATOR CARD ───────────────────────────────────────────────── -->
+  <main class="main-container">
+    <section class="generator-card glass-card" id="generatorSection">
+
+      <!-- User greeting strip -->
+      <div class="user-strip" id="userStrip" style="display:none">
+        <span id="userGreeting">👑 Welcome back, Queen!</span>
+        <button class="btn-ghost" onclick="resetUser()">Change name</button>
+      </div>
+
+      <!-- Scenario input -->
+      <div class="input-group">
+        <label class="input-label" for="scenarioInput">🔮 Describe the situation, darling…</label>
+        <div class="textarea-wrapper">
+          <textarea id="scenarioInput" class="scenario-textarea"
+            placeholder="E.g. 'My boss took credit for my idea in the meeting again' or paste the comment text here…"
+            rows="4" maxlength="500"></textarea>
+          <!-- Voice input button -->
+          <button class="voice-btn" id="voiceBtn" onclick="toggleVoice()" title="Speak your situation">🎙️</button>
+        </div>
+        <div class="char-count"><span id="charCount">0</span>/500</div>
+      </div>
+
+      <!-- 📸 Photo Upload (online comment screenshot) -->
+      <div class="upload-group">
+        <label class="input-label">📸 OR Upload a Screenshot of the Comment</label>
+        <div class="upload-zone" id="uploadZone" onclick="document.getElementById('photoInput').click()"
+          ondragover="handleDragOver(event)" ondrop="handleDrop(event)">
+          <div class="upload-icon">📷</div>
+          <p class="upload-hint">Drag & drop or <span class="upload-link">browse</span> a screenshot<br /><small>JPG,
+              PNG, WEBP · Max 5MB</small></p>
+          <input type="file" id="photoInput" accept="image/*" style="display:none"
+            onchange="handlePhotoUpload(event)" />
+        </div>
+        <!-- Preview -->
+        <div class="upload-preview" id="uploadPreview" style="display:none">
+          <img id="previewImg" src="" alt="Uploaded comment screenshot" />
+          <button class="remove-photo-btn" onclick="removePhoto()" title="Remove photo">✕ Remove</button>
+        </div>
+        <p class="upload-note" id="uploadNote" style="display:none">✅ Photo loaded! Your Fairy Godmother will read it
+          and conjure a reply. 🪄</p>
+      </div>
+
+      <!-- Humor level slider -->
+      <div class="slider-group">
+        <label class="input-label">
+          🌶️ Humor Level: <strong id="humorLabel">Level 5 – Bold & Sassy</strong>
+        </label>
+        <div class="slider-track-wrapper">
+          <span class="slider-end-label">😇 Gentle</span>
+          <input type="range" id="humorSlider" class="humor-slider" min="1" max="10" value="5" />
+          <span class="slider-end-label">😈 Savage</span>
+        </div>
+        <div class="humor-presets">
+          <button class="preset-btn" onclick="setHumor(2)">🌸 Polite</button>
+          <button class="preset-btn" onclick="setHumor(5)">💅 Sassy</button>
+          <button class="preset-btn active" onclick="setHumor(7)">🔥 Bold</button>
+          <button class="preset-btn" onclick="setHumor(10)">💣 Savage</button>
+        </div>
+      </div>
+
+      <!-- Generate button -->
+      <button class="btn-primary generate-btn" id="generateBtn" onclick="generateComeback()">
+        <span id="generateBtnText">🪄 Wave the Wand!</span>
+        <div class="btn-sparkle" aria-hidden="true"></div>
+      </button>
+
+      <!-- ── RESULT SECTION ───────────────────────────────────────────────── -->
+      <div class="result-section" id="resultSection" style="display:none">
+        <div class="result-card glass-card">
+          <div class="result-fairy">🧚‍♀️</div>
+          <div class="result-category" id="resultCategory">Workplace Drama</div>
+          <p class="result-text" id="resultText"></p>
+
+          <!-- Reaction emoji row -->
+          <div class="reaction-row">
+            <p class="reaction-label">Rate this comeback:</p>
+            <div class="emoji-reactions" id="emojiReactions">
+              <button class="emoji-btn" onclick="reactTo('🔥')" title="Fire">🔥</button>
+              <button class="emoji-btn" onclick="reactTo('👏')" title="Clap">👏</button>
+              <button class="emoji-btn" onclick="reactTo('😂')" title="Laughing">😂</button>
+              <button class="emoji-btn" onclick="reactTo('👑')" title="Queen">👑</button>
+              <button class="emoji-btn" onclick="reactTo('💅')" title="Slay">💅</button>
+            </div>
+          </div>
+
+          <!-- Action buttons -->
+          <div class="result-actions">
+            <button class="btn-secondary" onclick="copyComeback()">📋 Copy</button>
+            <button class="btn-secondary" onclick="shareToMeme()">🖼️ Make Meme</button>
+            <button class="btn-secondary" onclick="openShareModal()">💬 Share Story</button>
+            <button class="btn-ghost" onclick="generateComeback()">🔄 Another One!</button>
+          </div>
+        </div>
+
+        <!-- Confetti overlay (triggered after generation) -->
+        <div class="confetti-overlay" id="confettiOverlay" aria-hidden="true"></div>
+      </div>
+    </section>
+
+    <!-- ── HOW IT WORKS ─────────────────────────────────────────────────── -->
+    <section class="how-section">
+      <h2 class="section-title">How the Magic Works 🪄</h2>
+      <div class="steps-grid">
+        <div class="step-card glass-card">
+          <div class="step-icon">📝</div>
+          <h3>1. Describe It</h3>
+          <p>Type or speak your situation – no detail too small, no annoyance too petty.</p>
+        </div>
+        <div class="step-card glass-card">
+          <div class="step-icon">🧚‍♀️</div>
+          <h3>2. Fairy Works Her Magic</h3>
+          <p>Our AI analyzes the scenario and conjures the PERFECT witty comeback for your humor level.</p>
+        </div>
+        <div class="step-card glass-card">
+          <div class="step-icon">👑</div>
+          <h3>3. Walk Away a Queen</h3>
+          <p>Use it, share it, laugh about it. Your Fairy Godmother has you crowned and ready.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── SAMPLE SCENARIOS ─────────────────────────────────────────────── -->
+    <section class="samples-section">
+      <h2 class="section-title">Try These Scenarios ✨</h2>
+      <div class="samples-grid">
+        <button class="sample-chip" onclick="fillScenario(this.dataset.text)"
+          data-text="My boss took credit for my idea in front of the whole team">🏢 Boss stole my idea</button>
+        <button class="sample-chip" onclick="fillScenario(this.dataset.text)"
+          data-text="A man explained how to parallel park to me even though I've been driving for 10 years">🚗 Classic
+          mansplaining</button>
+        <button class="sample-chip" onclick="fillScenario(this.dataset.text)"
+          data-text="A stranger on the street told me to smile more">😐 Smile more command</button>
+        <button class="sample-chip" onclick="fillScenario(this.dataset.text)"
+          data-text="A colleague interrupted me every time I tried to speak in the meeting">🗣️ Constant
+          interruptions</button>
+        <button class="sample-chip" onclick="fillScenario(this.dataset.text)"
+          data-text="Someone commented on my outfit and said it was inappropriate for work">👗 Outfit policing</button>
+        <button class="sample-chip" onclick="fillScenario(this.dataset.text)"
+          data-text="He said I was being too emotional when I raised a valid concern">😤 Too emotional label</button>
+      </div>
+    </section>
+  </main>
+
+  <!-- ── FOOTER ────────────────────────────────────────────────────────────── -->
+  <footer class="footer">
+    <p>🧚‍♀️ <strong>SASSBack AI</strong> – Because every queen deserves the perfect comeback. <br />
+      Built with 💜 at <em>Women Only Hackathon 2026</em></p>
+    <div class="footer-links">
+      <a href="community.html">Community 💬</a>
+      <a href="insights.html">My Insights 📊</a>
+      <a href="#privacy">Privacy</a>
+    </div>
+  </footer>
+
+  <!-- ── MODALS ─────────────────────────────────────────────────────────────── -->
+
+  <!-- Nickname Modal -->
+  <div class="modal-overlay" id="nicknameModal" style="display:none" onclick="closeModal('nicknameModal')">
+    <div class="modal glass-card" onclick="event.stopPropagation()">
+      <button class="modal-close" onclick="closeModal('nicknameModal')">✕</button>
+      <div class="modal-fairy">🧚‍♀️</div>
+      <h2>Welcome to SASSBack! 👑</h2>
+      <p>What shall your Fairy Godmother call you?</p>
+      <input type="text" id="nicknameInput" class="text-input" placeholder="E.g. SassyQueen, DragonLady…"
+        maxlength="30" />
+      <button class="btn-primary" onclick="saveNickname()">Let's Go! ✨</button>
+    </div>
+  </div>
+
+  <!-- Share to Community Modal -->
+  <div class="modal-overlay" id="shareModal" style="display:none" onclick="closeModal('shareModal')">
+    <div class="modal glass-card" onclick="event.stopPropagation()">
+      <button class="modal-close" onclick="closeModal('shareModal')">✕</button>
+      <h2>Share Anonymously 💬</h2>
+      <p>Add some context (optional) and light up the community wall!</p>
+      <textarea id="shareStoryInput" class="scenario-textarea" rows="3"
+        placeholder="What happened? Others will see this anonymously ✨"></textarea>
+      <button class="btn-primary" onclick="submitShare()">Post to Wall 🌟</button>
+    </div>
+  </div>
+
+  <!-- Meme Card Modal -->
+  <div class="modal-overlay" id="memeModal" style="display:none" onclick="closeModal('memeModal')">
+    <div class="modal glass-card" onclick="event.stopPropagation()">
+      <button class="modal-close" onclick="closeModal('memeModal')">✕</button>
+      <h2>Your Comeback Meme 🖼️</h2>
+      <div class="meme-card" id="memeCard">
+        <div class="meme-header">🧚‍♀️ SASSBack AI says…</div>
+        <p class="meme-text" id="memeText"></p>
+        <div class="meme-footer">fairyback.ai ✨</div>
+      </div>
+      <button class="btn-primary" onclick="downloadMeme()">⬇️ Download Meme</button>
+    </div>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+
+</html>

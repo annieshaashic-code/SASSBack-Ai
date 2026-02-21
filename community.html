@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Community Wall – SASSBack AI 💬</title>
+    <meta name="description" content="Anonymous community stories from women sharing their comeback moments." />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700;800&family=Dancing+Script:wght@700&display=swap"
+        rel="stylesheet" />
+    <link rel="stylesheet" href="styles.css" />
+</head>
+
+<body>
+    <div class="sparkle-bg" aria-hidden="true"></div>
+
+    <!-- NAV -->
+    <nav class="navbar">
+        <div class="nav-logo">
+            <span class="wand">🪄</span>
+            <span class="logo-text">SASSBack AI</span>
+        </div>
+        <div class="nav-links">
+            <a href="index.html" class="nav-link">Home</a>
+            <a href="community.html" class="nav-link active">Community 💬</a>
+            <a href="insights.html" class="nav-link">My Insights 📊</a>
+        </div>
+    </nav>
+
+    <!-- PAGE HERO -->
+    <header class="page-hero">
+        <div class="fairy-avatar"
+            style="font-size:4rem;display:block;text-align:center;margin-bottom:16px;animation:fairyFloat 3s ease-in-out infinite;filter:drop-shadow(0 0 20px rgba(224,64,251,0.8))">
+            🧚‍♀️</div>
+        <h1 class="hero-title">Community Wall <span class="gradient-text">✨</span></h1>
+        <p class="hero-subtitle">Shared anonymously. Read, react, and feel the solidarity. 💜<br />
+            You are NOT alone in this. Every story here is proof.</p>
+        <div class="hero-badges">
+            <span class="badge">🔒 100% Anonymous</span>
+            <span class="badge">💜 Judgment-Free Zone</span>
+            <span class="badge">🌍 You're Not Alone</span>
+        </div>
+    </header>
+
+    <main class="main-container">
+
+        <!-- Stats strip -->
+        <div class="glass-card"
+            style="padding:20px 30px;display:flex;justify-content:space-around;flex-wrap:wrap;gap:16px;text-align:center;">
+            <div>
+                <div style="font-size:2rem;font-weight:800;background:linear-gradient(90deg,#e040fb,#ffd700);-webkit-background-clip:text;-webkit-text-fill-color:transparent"
+                    id="totalPosts">…</div>
+                <div style="font-size:0.85rem;color:#c4a8e0">Stories Shared</div>
+            </div>
+            <div>
+                <div style="font-size:2rem;font-weight:800;background:linear-gradient(90deg,#e040fb,#ffd700);-webkit-background-clip:text;-webkit-text-fill-color:transparent"
+                    id="totalLikes">…</div>
+                <div style="font-size:0.85rem;color:#c4a8e0">Total ❤️ Given</div>
+            </div>
+            <div>
+                <div
+                    style="font-size:2rem;font-weight:800;background:linear-gradient(90deg,#e040fb,#ffd700);-webkit-background-clip:text;-webkit-text-fill-color:transparent">
+                    🌍</div>
+                <div style="font-size:0.85rem;color:#c4a8e0">Global Solidarity</div>
+            </div>
+        </div>
+
+        <!-- Posts grid -->
+        <section>
+            <h2 class="section-title">Recent Stories 💬</h2>
+            <div class="post-grid" id="postsGrid">
+                <!-- JS-rendered -->
+                <div class="glass-card post-card" style="text-align:center;padding:40px;grid-column:1/-1">
+                    <div style="font-size:3rem;margin-bottom:16px">🧚‍♀️</div>
+                    <p style="color:#c4a8e0">Loading stories… your Fairy Godmother is fetching them with style.</p>
+                </div>
+            </div>
+            <div style="text-align:center;margin-top:28px">
+                <button class="btn-secondary" id="loadMoreBtn" onclick="loadMore()" style="display:none">
+                    Load More Stories ✨
+                </button>
+            </div>
+        </section>
+
+        <!-- Solidarity box -->
+        <div class="glass-card" style="padding:36px;text-align:center;border:1px solid rgba(224,64,251,0.3)">
+            <div style="font-size:3rem;margin-bottom:16px">💜</div>
+            <h3 style="font-size:1.3rem;margin-bottom:12px">The Magic of Solidarity</h3>
+            <p style="color:#c4a8e0;line-height:1.7;max-width:500px;margin:0 auto 24px">
+                Every comeback shared here is a reminder that these experiences are <em>common</em>, not personal
+                failures.
+                Together, we reframe, we laugh, and we rise. 🌟
+            </p>
+            <a href="index.html" class="btn-primary" style="text-decoration:none;display:inline-block">
+                🪄 Get MY Comeback
+            </a>
+        </div>
+
+    </main>
+
+    <footer class="footer">
+        <p>🧚‍♀️ <strong>SASSBack AI</strong> – Because every queen deserves the perfect comeback.<br />
+            Built with 💜 at <em>Women Only Hackathon 2026</em></p>
+        <div class="footer-links">
+            <a href="index.html">Home</a>
+            <a href="insights.html">My Insights 📊</a>
+        </div>
+    </footer>
+
+    <script>
+        const CATEGORY_MAP = {
+            mansplaining: "🎓 Mansplaining", interruption: "🗣️ Interruption",
+            outfit_comment: "👗 Outfit Police", condescension: "😤 Condescension",
+            workplace: "🏢 Workplace", street_harassment: "🚶‍♀️ Street Nonsense",
+            general: "✨ General Sass",
+        };
+
+        let page = 0;
+        const PAGE_SZ = 6;
+        let allPosts = [];
+        let localLikes = JSON.parse(localStorage.getItem("sassback_likes") || "{}");
+
+        function timeAgo(dateStr) {
+            const diff = (Date.now() - new Date(dateStr).getTime()) / 1000;
+            if (diff < 60) return "just now";
+            if (diff < 3600) return `${Math.floor(diff / 60)}m ago`;
+            if (diff < 86400) return `${Math.floor(diff / 3600)}h ago`;
+            return `${Math.floor(diff / 86400)}d ago`;
+        }
+
+        function escapeHtml(str = "") {
+            return str.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
+        }
+
+        function loadPosts() {
+            // Read from localStorage
+            allPosts = JSON.parse(localStorage.getItem("sassback_community") || "[]");
+
+            // Update stats
+            document.getElementById("totalPosts").textContent = allPosts.length || "0";
+            const totalLikes = Object.values(localLikes).reduce((s, v) => s + v, 0);
+            document.getElementById("totalLikes").textContent = totalLikes || "0";
+
+            page = 0;
+            renderPage(true);
+        }
+
+        function renderPage(clear) {
+            const grid = document.getElementById("postsGrid");
+            const slice = allPosts.slice(page * PAGE_SZ, (page + 1) * PAGE_SZ);
+
+            if (clear) grid.innerHTML = "";
+
+            if (!allPosts.length && clear) {
+                grid.innerHTML = `
+                  <div class="glass-card post-card" style="text-align:center;padding:40px;grid-column:1/-1">
+                    <div style="font-size:3rem;margin-bottom:16px">🌱</div>
+                    <p style="color:#c4a8e0">No stories yet! Generate a comeback on the home page and share it to the wall. ✨</p>
+                    <a href="index.html" class="btn-primary" style="text-decoration:none;display:inline-block;margin-top:16px">🪄 Generate a Comeback</a>
+                  </div>`;
+                document.getElementById("loadMoreBtn").style.display = "none";
+                return;
+            }
+
+            slice.forEach(post => {
+                const likes = localLikes[post.id] || 0;
+                const card = document.createElement("div");
+                card.className = "glass-card post-card";
+                card.innerHTML = `
+                  <span class="post-category-badge">${CATEGORY_MAP[post.category] || "✨ Story"}</span>
+                  <p class="post-text">${escapeHtml(post.story)}</p>
+                  <div style="background:rgba(224,64,251,0.06);border-radius:10px;padding:10px 14px;margin:10px 0;font-size:0.88rem;color:#f3e8ff;font-style:italic">
+                    💬 "${escapeHtml((post.comeback || "").substring(0, 120))}${(post.comeback || "").length > 120 ? "…" : ""}"
+                  </div>
+                  <div style="display:flex;justify-content:space-between;align-items:center">
+                    <span class="post-time">⏰ ${timeAgo(post.date || post.created_at || new Date().toISOString())} · ${escapeHtml(post.nickname || "Anonymous Queen")}</span>
+                    <button class="like-btn" id="like-${post.id}" onclick="likePost(${post.id})">❤️ ${likes}</button>
+                  </div>`;
+                grid.appendChild(card);
+            });
+
+            const hasMore = (page + 1) * PAGE_SZ < allPosts.length;
+            document.getElementById("loadMoreBtn").style.display = hasMore ? "inline-block" : "none";
+        }
+
+        function likePost(id) {
+            localLikes[id] = (localLikes[id] || 0) + 1;
+            localStorage.setItem("sassback_likes", JSON.stringify(localLikes));
+            const btn = document.getElementById(`like-${id}`);
+            if (btn) { btn.textContent = `❤️ ${localLikes[id]}`; btn.style.color = "#ff6b6b"; btn.disabled = true; }
+            // Update total liked count
+            const total = Object.values(localLikes).reduce((s, v) => s + v, 0);
+            document.getElementById("totalLikes").textContent = total;
+        }
+
+        function loadMore() { page++; renderPage(false); }
+
+        loadPosts();
+    </script>
+</body>
+
+</html>
